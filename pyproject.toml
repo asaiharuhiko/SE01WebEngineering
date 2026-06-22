@@ -1,9 +1,10 @@
 [project]
 name = "se01webengineering"
 version = "0.1.0"
-description = "Add your description here"
+description = "web app about the blog site for SE01webengineering"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "coverage>=7.14.2",
     "ruff>=0.15.17",
 ]

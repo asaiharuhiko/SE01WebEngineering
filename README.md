@@ -1,8 +1,20 @@
 # SE01WebEngineering
-
+2026/Q2 in UoA
 ## outline
+The proposed web application allows the user to create blog posts in a shared blog space.
 
 ## environment
-
+- HTMLX
+- Django
+- Python
 ## tools
-
+### uv 
+for package management
+### Ruff 
+for formatting and liting
+### coverage.py 
+for coverage 
+### git 
+for version management
+### VisualStudioCode 
+for coding
