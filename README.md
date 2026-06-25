@@ -4,17 +4,17 @@
 The proposed web application allows the user to create blog posts in a shared blog space.
 
 ## environment
-- HTMLX
+- HTMX
 - Django
 - Python
 ## tools
 ### uv 
 for package management
 ### Ruff 
-for formatting and liting
+for formatting and linting
 ### coverage.py 
 for coverage 
 ### git 
 for version management
-### VisualStudioCode 
+### Visual Studio Code 
 for coding
