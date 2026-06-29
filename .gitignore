@@ -1,4 +1,10 @@
+# Python
 .python-version
 .venv
 .idea
 __pycache__
+
+
+# AI tools
+.agents
+.opencode
