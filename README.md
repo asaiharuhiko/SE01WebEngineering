@@ -1,6 +1,7 @@
 # SE01WebEngineering
 2026/Q2 in UoA
 ## outline
+### The blogs
 The proposed web application allows the user to create blog posts in a shared blog space.
 
 ### Main user actions
