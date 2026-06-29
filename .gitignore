@@ -8,3 +8,6 @@ __pycache__
 # AI tools
 .agents
 .opencode
+
+# mac
+.DS_Store
