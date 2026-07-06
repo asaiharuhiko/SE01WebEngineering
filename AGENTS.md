@@ -2,7 +2,7 @@
 
 ## Project scope
 
-This is a Django app for creating blog posts in a shared blog space.
+This is a Django app for creating blog posts in a shared blog space. See `GRADING.md` for grading rubric constraints.
 
 ## Stack (per README)
 - **Django** + **HTMX** 
@@ -13,9 +13,8 @@ This is a Django app for creating blog posts in a shared blog space.
 
 ## Important project conventions
 
-- Put business workflow logic in `services.py`, not in views or serializers.
-- Put reusable read/query logic in `selectors.py`.
-- Keep Celery tasks thin; they should call service functions.(if use Celery)
+- Put business workflow logic in `services.py`, not in views or serializers (convention for future apps).
+- Put reusable read/query logic in `selectors.py` (convention for future apps).
 
 ## Commands
 
@@ -23,18 +22,20 @@ This is a Django app for creating blog posts in a shared blog space.
 - Run tests: `pytest`
 - Create migrations: `python manage.py makemigrations`
 - Apply migrations: `python manage.py migrate`
+- Lint: `ruff check`
+- Format: `ruff format`
 
 ## Things that are easy to break
 
-- API response shapes in `apps/api`
-- role/permission checks in `apps/accounts`
+- View logic mixed into templates
+- URL pattern ordering
 
 ## Change coupling
 
 If you change:
 
 - a model → also check serializers, factories, and admin
-- permissions → also check both web views and API endpoints
+- permissions → also check both web views and API endpoints (future)
 
 ## Constraints
 
@@ -57,9 +58,9 @@ If you change:
 Add or update tests for:
 
 - permission changes
-- API response changes
+- view response changes
 
 ## Grading
 
-This project is on SE01WebEngineering. 
-When you review project also code, please check `GRADING.md`.
+This project is for SE01WebEngineering. 
+When reviewing project code, always check `GRADING.md` for the rubric.
