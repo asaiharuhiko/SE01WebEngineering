@@ -11,3 +11,9 @@ __pycache__
 
 # mac
 .DS_Store
+
+# database
+.sqlite3
+
+# keep secret key
+blog_prj/settings_local.py
