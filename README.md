@@ -13,19 +13,21 @@ The proposed web application allows the user to create blog posts in a shared bl
 
 ### Basic data model idea
 
-#### User table
+#### User table　(Using Django's AbstractUser)
 | Column | Type | Comment |
 | --- | --- | --- |
-| id | int | Unique user name|
+| id | int | primary key (auto create) |
+| username | string | unique user name|
 | password | string | Password |
 
 #### Article table
 | Column | Type | Comment |
 | --- | --- | --- |
+| id | int | primary key (auto create) |
 | title | string | Title of the blog |
-| author | string | Author name of the blog |
-| content | string | The content of the blog |
-| creationDate | date | The date created the blog |
+| author | ForeignKey | Author name of the blog. (Link to User table) |
+| content | text | The content of the blog |
+| creation_date | date | The date the blog was created |
 
 ## environment
 - HTMX

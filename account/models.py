@@ -1,9 +1,8 @@
-from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
-class user_account(models.Model):
-    user_id = models.CharField(max_length=20,unique=True)
-    password = models.TextField()
+class UserAccount(AbstractUser):
+    pass
     
     def __str__(self):
-        return self.user_id
+        return self.username
