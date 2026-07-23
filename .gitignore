@@ -6,8 +6,13 @@ __pycache__
 
 
 # AI tools
-.agents
 .opencode
 
 # mac
 .DS_Store
+
+# database
+db.sqlite3
+
+# keep secret key
+blog_prj/settings_local.py
