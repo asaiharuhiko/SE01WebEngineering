@@ -16,3 +16,6 @@ db.sqlite3
 
 # keep secret key
 blog_prj/settings_local.py
+
+# plan
+PLAN.md
