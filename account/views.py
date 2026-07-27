@@ -26,6 +26,9 @@ class LoginView(View):
     
 class LogoutView(View):
     def get(self, request):
+        return render(request,"account/logout.html")
+    
+    def post(self, request):
         logout(request)
         return redirect("post:index")
     
