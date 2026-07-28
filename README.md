@@ -143,6 +143,9 @@ Navigate to **Dashboard → Your App → Environment** and set:
 | `DEBUG` | Set to `False` for production |
 | `DATABASE_URL` | Internal Render PostgreSQL URL (auto-provided by Render when you attach a database) |
 
+## Live Demo
+
+https://se01webengineering.onrender.com/
 
 ## Environment
 
