@@ -1,6 +1,6 @@
 from django import template
 from datetime import date
-from post.calendars import BlogCalendar
+from post.calendars import BlogCalendar, get_prev_next_month
 
 register = template.Library()
 
@@ -12,15 +12,7 @@ def calendar():
     cal = BlogCalendar(year, month)
     calendar_html = cal.formatmonth(year, month)
 
-    if month == 1:
-        prev_year, prev_month = year - 1, 12
-        next_year, next_month = year, 2
-    elif month == 12:
-        prev_year, prev_month = year, 11
-        next_year, next_month = year + 1, 1
-    else:
-        prev_year, prev_month = year, month - 1
-        next_year, next_month = year, month + 1
+    prev_year, prev_month, next_year, next_month = get_prev_next_month(year, month)
 
     return {
         "calendar_html": calendar_html,

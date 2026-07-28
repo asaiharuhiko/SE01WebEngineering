@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
 from .forms import BlogForm
 from .selectors import get_latest_posts,get_posts_by_query,get_posts_by_date,get_posts_by_author,get_post,get_calendar_context,get_authors_list
 from .services import create_post
@@ -10,7 +11,7 @@ class IndexView(View):
         posts = get_latest_posts(request.GET.get("page",1))
 
         if request.headers.get('HX-Request'):
-            return render(request, "post/post_list.html", {"posts": posts, "base_url": "/?"})
+            return render(request, "post/post_list.html", {"posts": posts, "base_url": reverse("post:index") + "?"})
 
         return render(request, "post/index.html", {"posts": posts, "base_url": "/?"})
     
@@ -53,6 +54,8 @@ class SearchView(View):
             return f"/post/search/?date={date_str}"
         elif author:
             return f"/post/search/?author={author}"
+        else:
+            return ""
 
     
 class CreatePostView(LoginRequiredMixin,View):

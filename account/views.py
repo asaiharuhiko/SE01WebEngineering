@@ -17,7 +17,7 @@ class LoginView(View):
         return render(request,"account/login.html",{"form" : form})
     
     def post(self, request):
-        form = UserAccountLoginForm(request,data=request.POST)
+        form = UserAccountLoginForm(request=request,data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
             return redirect("post:index")
