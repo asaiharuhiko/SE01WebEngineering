@@ -22,6 +22,14 @@ Full specification is available at [openspec/specs/blogs/spec.md](openspec/specs
 ## Project Structure
 
 ```
+├── static/
+│   ├── css/
+│   │   ├── authors.css
+│   │   ├── base.css
+│   │   └── form.css
+│   ├── js/
+│   │   └── base.js
+│   └── htmx.min.js
 ├── account/          # User authentication app
 │   ├── models.py
 │   ├── views.py
