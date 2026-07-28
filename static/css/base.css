@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-areas:"header header"
+                        "content sidebar";
+    grid-template-columns: 1fr 250px;
+    grid-template-rows: auto 1fr;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* header */
+.post-link{
+    font-weight: bold;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* sidebar */
+.sidebar {
+    grid-area: sidebar;
+}
+
+/* content */
+#content {
+    grid-area: content;
+    padding: 3em;
+}
+
+.post{
+    background-color: rgb(251, 249, 249);
+    padding: 1em;
+    margin: 2em;
+}
+
+.post a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.post h3{
+    font-size: 3em;
+}
+
+.cursor {
+    text-align: center;
+}
+
+/* calendar */
+.calendar table.month {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+
+.calendar th.month {
+    text-align: center;
+    padding: 0.5em;
+    font-size: 1.1em;
+}
+
+.calendar th.mon,
+.calendar th.tue,
+.calendar th.wed,
+.calendar th.thu,
+.calendar th.fri,
+.calendar th.sat,
+.calendar th.sun {
+    text-align: center;
+    padding: 0.3em;
+    font-weight: normal;
+    color: #666;
+}
+
+.calendar td {
+    text-align: center;
+    padding: 0.4em;
+    border: 1px solid #eee;
+}
+
+.calendar td a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.2em;
+    border-radius: 4px;
+}
+
+.calendar td a:hover {
+    background-color: #f0f0f0;
+}
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+    font-size: 0.9em;
+}
+
+.calendar-nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.calendar-nav a:hover {
+    text-decoration: underline;
+}

@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <script src="{% static 'htmx.min.js' %}"></script>
 </head>
 <body>
     <header>
         <h1><a href="{% url 'post:index' %}">BLOG</a></h1>
-            <a href="{% url 'post:create' %}">GO POST!</a>
+            <a href="{% url 'post:create' %}" class="post-link">GO POST!</a>
     </header>
 
     <aside class="sidebar">
+    
     {% if user.is_authenticated %}
         <p>account:<a href="{% url 'account:information' %}">{{ user.username }}</a></p>
         <a href="{% url 'account:logout' %}">Logout</a>
@@ -28,10 +30,11 @@
         <button type="submit">Search</button>
     </form>
 
-    <a href=" {% url 'post:authors' %}">authors</a>
+    <a href="{% url 'post:authors' %}">authors</a>
     </aside>
-
+    <div id="content">
     {% block content %}
     {% endblock %}
+    </div>
 </body>
 </html>

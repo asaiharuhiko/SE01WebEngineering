@@ -6,7 +6,7 @@
 
 {%block content%}
 <h2>{{ post.title }}</h2>
-<div>{{ post.author }} / {{ post.creation_date }}</div>
+<div><a href="{% url 'post:search' %}?author={{ post.author }}">{{ post.author }}</a> / {{ post.creation_date }}</div>
 <div>{{ post.content | linebreaksbr}}</div>
 <br>
 <button onclick="history.back()">back</button>

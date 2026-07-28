@@ -1,7 +1,9 @@
 <div id="authors">
     <ul>
     {% for author in authors %}
-        <li><a href="{% url 'post:search' %}?author={{ author }}">{{ author }} san</a></li>
+        <li>
+            <a href="{% url 'post:search' %}?author={{ author }}">{{ author }}</a>
+        </li>
     {% empty %}
         <li>no one is here.</li>
     {% endfor %}
