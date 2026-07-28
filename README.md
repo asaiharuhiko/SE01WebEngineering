@@ -55,16 +55,16 @@ cd SE01WebEngineering
 uv sync
 
 # Apply migrations
-python manage.py migrate
+uv run python manage.py migrate
 
 # Create superuser (optional)
-python manage.py createsuperuser
+uv run python manage.py createsuperuser
 ```
 
 ### Run
 
 ```bash
-python manage.py runserver
+uv run python manage.py runserver
 ```
 
 Access at http://127.0.0.1:8000/
@@ -73,21 +73,21 @@ Access at http://127.0.0.1:8000/
 
 ```bash
 # Run all tests
-pytest
+uv run pytest
 
 # Run with coverage
-coverage run -m pytest
-coverage report
+uv run coverage run -m pytest
+uv run coverage report
 ```
 
 ## Code Quality
 
 ```bash
 # Lint
-ruff check
+uv run ruff check
 
 # Format
-ruff format
+uv run ruff format
 ```
 
 ## environment

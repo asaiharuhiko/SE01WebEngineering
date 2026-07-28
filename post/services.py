@@ -3,4 +3,3 @@ def create_post(form, author):
     post.author = author
     post.save()
     return post
-    

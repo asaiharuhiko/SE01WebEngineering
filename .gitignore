@@ -4,7 +4,6 @@
 .idea
 __pycache__
 
-
 # AI tools
 .opencode
 
@@ -19,3 +18,6 @@ blog_prj/settings_local.py
 
 # plan
 PLAN.md
+
+# coverage
+.coverage
