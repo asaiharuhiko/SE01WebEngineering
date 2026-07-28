@@ -86,6 +86,25 @@ The database will contain two tables:
 - **post_list.html**: Partial template for HTMX post list updates
 - **calendar.html**: Calendar component with navigation
 
+### Layout (responsive sidebar)
+The page uses a CSS Grid layout with header, sidebar, content, and footer
+areas. On screens wider than 768px, sidebar sits beside content in a two-column
+grid. On 768px and below, the layout collapses to a single column and the
+sidebar becomes a fixed overlay that slides in from the right.
+
+#### Static files
+- **base.css**: Grid layout, sidebar toggle classes (`.sidebar-closed` for
+  desktop, `.sidebar-open` for mobile), media query at 768px breakpoint,
+  overlay backdrop
+- **base.js**: Sidebar toggle with `isMobile()` check. Desktop: toggles
+  `.sidebar-closed` class and persists state in `localStorage`. Mobile:
+  toggles `.sidebar-open` class (no persistence). Clicking the overlay closes
+  the sidebar. Resize handler resets mobile state when switching to desktop.
+- **sidebar-toggle button** (`#sidebar-toggle`): Located in the `<header>`,
+  triggers toggle on click
+- **sidebar-overlay** (`#sidebar-overlay`): Full-screen backdrop shown only on
+  mobile when sidebar is open, closes sidebar on click
+
 
 ## Main user flow
 
