@@ -1,4 +1,4 @@
-# SE01WebEngineering
+# Blogs - SE01WebEngineering
 
 2026/Q2 in UoA
 
@@ -46,6 +46,15 @@ Full specification is available at [openspec/specs/blogs/spec.md](openspec/specs
 ```
 
 ## Setup
+
+## Environment Variables
+
+The application can be configured using the following environment variables.
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| SECRET_KEY | Django secret key | development key |
+| DEBUG | Enable debug mode | True |
 
 ### Prerequisites
 
@@ -97,8 +106,29 @@ uv run ruff check
 # Format
 uv run ruff format
 ```
+## Deployment
 
-## environment
+This project is configured for deployment on Render.
+
+Build Command
+
+```bash
+uv sync
+uv run python manage.py collectstatic --noinput
+```
+
+Start Command
+
+```bash
+uv run gunicorn blog_prj.wsgi:application
+```
+
+Required environment variables
+
+- SECRET_KEY
+- DEBUG
+
+## Environment
 
 - **Django**: web application framework
 - **HTMX**: Async interface for dynamic updates
@@ -112,3 +142,5 @@ uv run ruff format
 | coverage.py | Test coverage |
 | pytest | Testing |
 | git | Version control |
+| gunicorn | WSGI application server |
+| whitenoise | Serve static files |
