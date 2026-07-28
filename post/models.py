@@ -9,7 +9,7 @@ class BlogPost(models.Model):
         on_delete=models.CASCADE
     )
     content = models.TextField()
-    creation_date = models.DateField(default=timezone.now)
+    creation_date = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.title
