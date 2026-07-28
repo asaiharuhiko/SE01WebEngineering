@@ -47,15 +47,6 @@ Full specification is available at [openspec/specs/blogs/spec.md](openspec/specs
 
 ## Setup
 
-## Environment Variables
-
-The application can be configured using the following environment variables.
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| SECRET_KEY | Django secret key | development key |
-| DEBUG | Enable debug mode | True |
-
 ### Prerequisites
 
 - Python >= 3.13
@@ -85,6 +76,15 @@ uv run python manage.py runserver
 ```
 
 Access at http://127.0.0.1:8000/
+
+## Environment Variables
+
+For production deployment, configure the following environment variables:
+
+| Variable | Description |
+|----------|-------------|
+| `SECRET_KEY` | Django secret key |
+| `DEBUG` | Enable debug mode |
 
 ## Testing
 
