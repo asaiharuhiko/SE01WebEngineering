@@ -1,4 +1,4 @@
-# SE01WebEngineering
+# Blogs - SE01WebEngineering
 
 2026/Q2 in UoA
 
@@ -22,6 +22,14 @@ Full specification is available at [openspec/specs/blogs/spec.md](openspec/specs
 ## Project Structure
 
 ```
+├── static/
+│   ├── css/
+│   │   ├── authors.css
+│   │   ├── base.css
+│   │   └── form.css
+│   ├── js/
+│   │   └── base.js
+│   └── htmx.min.js
 ├── account/          # User authentication app
 │   ├── models.py
 │   ├── views.py
@@ -69,6 +77,15 @@ uv run python manage.py runserver
 
 Access at http://127.0.0.1:8000/
 
+## Environment Variables
+
+For production deployment, configure the following environment variables:
+
+| Variable | Description |
+|----------|-------------|
+| `SECRET_KEY` | Django secret key |
+| `DEBUG` | Enable debug mode |
+
 ## Testing
 
 ```bash
@@ -89,8 +106,29 @@ uv run ruff check
 # Format
 uv run ruff format
 ```
+## Deployment
 
-## environment
+This project is configured for deployment on Render.
+
+Build Command
+
+```bash
+uv sync
+uv run python manage.py collectstatic --noinput
+```
+
+Start Command
+
+```bash
+uv run gunicorn blog_prj.wsgi:application
+```
+
+Required environment variables
+
+- SECRET_KEY
+- DEBUG
+
+## Environment
 
 - **Django**: web application framework
 - **HTMX**: Async interface for dynamic updates
@@ -104,3 +142,5 @@ uv run ruff format
 | coverage.py | Test coverage |
 | pytest | Testing |
 | git | Version control |
+| gunicorn | WSGI application server |
+| whitenoise | Serve static files |

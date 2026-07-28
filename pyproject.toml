@@ -8,8 +8,10 @@ dependencies = [
     "coverage>=7.14.2",
     "django>=6.0.6",
     "django-htmx>=1.28.0",
+    "gunicorn>=26.0.0",
     "pytest-django>=4.12.0",
     "ruff>=0.15.17",
+    "whitenoise>=6.12.0",
 ]
 
 [tool.pytest.ini_options]
