@@ -19,28 +19,6 @@ The user can
 3.	The system should not display more than P posts per page. If there are more matching posts, the app should display “Next” and “Previous” links for pagination.
 4.	For the search function, the user types a string in the search box, and the system returns all blog posts containing in the title.
 
-## User interface (sketch)
-
-Home
-![home](images/home.png)
-
-Search
-![search_text](images/search1.png)
-![search_date](images/search2.png)
-![search_author](images/search3.png)
-
-author
-![author](images/authors.png)
-
-post blog page
-![post_blog_page](images/post_blog.png)
-
-Blog text page
-![blog_text_page](images/blog_text.png)
-
-
-
-
 
 
 ## Basic data model idea
@@ -111,14 +89,32 @@ The database will contain two tables:
 
 ## Main user flow
 
-1. **Enter page**: Display home page with latest blog posts sorted by date (most recent first)
-2. **Login**: Input username and password → authenticate and redirect to home page
-3. **Post Blog**: Click "Post Your Blog" → input title, content, creation date → save to database
-4. **Search by keyword**: Input string in search box → display posts matching title keyword
-5. **Search by date**: Click day in calendar → display posts created on that date
-6. **Search by author**: Click author name → display posts by that author
-7. **View post**: Click blog title → display full blog post content
-8. **Pagination**: Click "Next"/"Previous" links to navigate through multiple pages of results
+Enter page: show the page sort by date.<br>
+Login: input id and password → login to the account if id and password are valid.<br>
+Post Blog: input blog information → record the content to DB.<br>
+Search: write string on form and click search → show search result<br>
+Search-date: click the day of calendar　→ show search result<br>
 
-## Architecture sketch
+
+## User interface sketch(old)
+
+Home
+![home](images/home.png)
+
+Search
+![search_text](images/search1.png)
+![search_date](images/search2.png)
+![search_author](images/search3.png)
+
+author
+![author](images/authors.png)
+
+post blog page
+![post_blog_page](images/post_blog.png)
+
+Blog text page
+![blog_text_page](images/blog_text.png)
+
+
+## Architecture sketch (old)
 ![architecture sketch](images/arcsk.png)
