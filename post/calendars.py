@@ -14,7 +14,7 @@ class BlogCalendar(calendar.HTMLCalendar):
             return '<td class="noday">&nbsp;</td>'
 
         d = date(self.year, self.month, day)
-        url = reverse("post:search") + f"?date{d:%Y-%m-%d}"
+        url = reverse("post:search") + f"?date={d:%Y-%m-%d}"
         return f'<td class="day"><a href="{url}">{day}</a></td>'
 
 

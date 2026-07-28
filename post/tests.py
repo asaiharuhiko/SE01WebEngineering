@@ -191,7 +191,7 @@ class CalendarTests(TestCase):
         cal = BlogCalendar(2026, 7)
         result = cal.formatday(15, 7)
         self.assertIn('<td class="day">', result)
-        self.assertIn('href="/post/search/?date2026-07-15"', result)
+        self.assertIn('href="/post/search/?date=2026-07-15"', result)
         self.assertIn(">15<", result)
 
     def test_formatday_with_zero_returns_empty(self):
