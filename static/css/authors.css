@@ -1,0 +1,13 @@
+.author {
+    font-size: 3em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+.author a{
+    color: rgb(16, 16, 16);
+}
+
+.author a:hover{
+    color: rgb(216, 216, 216);
+}

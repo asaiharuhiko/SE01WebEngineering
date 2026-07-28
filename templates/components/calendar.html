@@ -1,4 +1,5 @@
 <div class="calendar" id="calendar">
+    {{ calendar_html|safe }}
     <div class="calendar-nav">
         <a href="{% url 'post:calendar' prev_year prev_month %}"
            hx-get="{% url 'post:calendar' prev_year prev_month %}"
@@ -10,5 +11,4 @@
            hx-target="#calendar"
            hx-swap="outerHTML">next →</a>
     </div>
-    {{ calendar_html|safe }}
 </div>

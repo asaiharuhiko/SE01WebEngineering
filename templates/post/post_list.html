@@ -1,14 +1,20 @@
 <div id="post-list">
     <ul>
     {% for post in posts %}
-        <li><a href="{% url 'post:detail' post.id%}">{{ post.title }}</a></li>
+        <li class="post">
+            <a href="{% url 'post:detail' post.id%}">
+                <h3>{{ post.title }}</h3>
+                <p>Date: {{ post.creation_date}}</p>
+                <p>Author: {{ post.author }}</p>
+            </a>
+        </li>
     {% empty %}
         <li>no post</li>
     {% endfor %}
     </ul>
 
     {% if posts.has_other_pages %}
-    <div>
+    <div class="cursor">
         {% if posts.has_previous %}
             <a href="{{ base_url }}&page={{ posts.previous_page_number }}" hx-get="{{ base_url }}&page={{ posts.previous_page_number }}" hx-target="#post-list" hx-swap="outerHTML"> ← prev</a>
         {% endif %}

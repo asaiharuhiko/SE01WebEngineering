@@ -5,33 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <script src="{% static 'htmx.min.js' %}"></script>
+    <script src="{% static 'js/base.js'%}" defer></script>
+    {% block script %}{% endblock %}
 </head>
 <body>
     <header>
         <h1><a href="{% url 'post:index' %}">BLOG</a></h1>
-            <a href="{% url 'post:create' %}">GO POST!</a>
+            <a href="{% url 'post:create' %}" class="post-link">GO POST!</a>
+            <button id="sidebar-toggle">☰</button>
     </header>
 
     <aside class="sidebar">
+    
+    <div id="account">
     {% if user.is_authenticated %}
-        <p>account:<a href="{% url 'account:information' %}">{{ user.username }}</a></p>
-        <a href="{% url 'account:logout' %}">Logout</a>
+        <p>account<br><a href="{% url 'account:information' %}">{{ user.username }}</a></p>
+        <p class="info"><a href="{% url 'account:logout' %}">Logout from this account</a></p>
     {% else %}
-        <a href="{% url 'account:login' %}">Login</a>
+        <p><a href="{% url 'account:login' %}">Login</a></p>
     {% endif %}
+    </div>
     {% load calendar_tags %}
     {% calendar %}
 
     <form action="{% url 'post:search' %}" method="get">
-        <input type="text" name="words" placeholder="search posts">
-        <button type="submit">Search</button>
+        <div id="search-box">
+        <input class="search" type="text" name="words" placeholder="search posts">
+        <button class="search" type="submit">Search</button>
+        </div>
     </form>
 
-    <a href=" {% url 'post:authors' %}">authors</a>
+    <a class="authors" href="{% url 'post:authors' %}">all authors</a>
     </aside>
-
+    <div id="content">
     {% block content %}
     {% endblock %}
+    </div>
+    <footer>
+    <p>&copy; 2026 ASAI Haruhiko</p>
+    </footer>
 </body>
 </html>

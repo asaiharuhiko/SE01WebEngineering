@@ -3,6 +3,10 @@
 {% block title%}
 login
 {% endblock %}
+{% block script %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
 
 {%block content%}
     <h2>login</h2>
@@ -11,5 +15,6 @@ login
         {{ form.as_p }}
         <button type="submit">login</button>
     </form>
-    <p>If you don't have your account, please <a href="{% url 'account:create'%}">create account.</a></p>
+    <br>
+    <p class="caution">If you don't have your account, please <a href="{% url 'account:create'%}">create account.</a></p>
 {% endblock %}

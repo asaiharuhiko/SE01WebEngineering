@@ -3,14 +3,17 @@
 {% block title%}
 create post
 {% endblock %}
+{% block script %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
 
 {%block content%}
     <h2>post your blog</h2>
-    <p>Author: {{ user.username }}</p>
+    <p><label>Author:</label>　{{ user.username }}</p>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Post your blog</button>
     </form>
-    <button onclick="history.back()">back</button>
 {% endblock %}

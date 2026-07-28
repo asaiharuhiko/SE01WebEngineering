@@ -3,6 +3,10 @@
 {% block title%}
 authors
 {% endblock %}
+{% block script%}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/authors.css' %}">
+{% endblock%}
 
 {%block content%}
     <h2> authors </h2>

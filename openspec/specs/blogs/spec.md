@@ -19,7 +19,84 @@ The user can
 3.	The system should not display more than P posts per page. If there are more matching posts, the app should display “Next” and “Previous” links for pagination.
 4.	For the search function, the user types a string in the search box, and the system returns all blog posts containing in the title.
 
-## User interface (sketch)
+
+
+## Basic data model idea
+
+The database will contain two tables:
+
+#### User table　(Using Django's AbstractUser)
+| Column | Type | Comment |
+| --- | --- | --- |
+| id | int | primary key (auto create) |
+| username | string | unique user name|
+| password | string | Password |
+
+#### BlogPost table
+| Column | Type | Comment |
+| --- | --- | --- |
+| id | int | primary key (auto create) |
+| title | string | Title of the blog |
+| author | ForeignKey | Author name of the blog. (Link to User table) |
+| content | text | The content of the blog |
+| creation_date | date | The date the blog was created |
+
+## Project plan
+1.	Set up the development environment.
+2.	Create the database and design its structure.
+3.	Implement the business logic.
+4.	Create a simple HTML prototype of the interface.
+5.	Add richer interaction to the interface.
+## Main data entities
+
+### Models
+- **BlogPost**: id, title, author (ForeignKey to User), content, creation_date
+- **User**: Django's AbstractUser (id, username, password, etc.)
+
+### Forms
+- **BlogForm**: ModelForm for BlogPost (fields: title, content, creation_date)
+
+### Views
+- **IndexView**: Display all blog posts sorted by date (most recent first)
+- **SearchView**: Search posts by title keyword, date, or author
+- **CreatePostView**: Create new blog post (login required)
+- **PostDetailView**: Display single blog post
+- **CalendarView**: Display calendar and posts for selected date
+- **AuthorsView**: Display list of all authors
+
+### Services
+- **create_post**: Create and save new blog post with author association
+
+### Selectors
+- **get_latest_posts**: Retrieve paginated blog posts sorted by date
+- **get_posts_by_query**: Search posts by title keyword
+- **get_posts_by_date**: Filter posts by creation date
+- **get_posts_by_author**: Filter posts by author username
+- **get_post**: Retrieve single post by ID
+- **get_authors_list**: Retrieve paginated list of all authors
+- **get_calendar_context**: Generate calendar HTML and navigation context
+
+### Templates
+- **index.html**: Home page with latest posts
+- **post_detail.html**: Single blog post view
+- **create.html**: Blog post creation form
+- **search.html**: Search results page
+- **authors.html**: Authors list page
+- **author_list.html**: Partial template for HTMX author list updates
+- **post_list.html**: Partial template for HTMX post list updates
+- **calendar.html**: Calendar component with navigation
+
+
+## Main user flow
+
+Enter page: show the page sort by date.<br>
+Login: input id and password → login to the account if id and password are valid.<br>
+Post Blog: input blog information → record the content to DB.<br>
+Search: write string on form and click search → show search result<br>
+Search-date: click the day of calendar　→ show search result<br>
+
+
+## User interface sketch(old)
 
 Home
 ![home](images/home.png)
@@ -39,60 +116,5 @@ Blog text page
 ![blog_text_page](images/blog_text.png)
 
 
-
-
-
-
-## Basic data model idea
-
-The database will contain two tables:
-
-#### User table　(Using Django's AbstractUser)
-| Column | Type | Comment |
-| --- | --- | --- |
-| id | int | primary key (auto create) |
-| username | string | unique user name|
-| password | string | Password |
-
-#### Article table
-| Column | Type | Comment |
-| --- | --- | --- |
-| id | int | primary key (auto create) |
-| title | string | Title of the blog |
-| author | ForeignKey | Author name of the blog. (Link to User table) |
-| content | text | The content of the blog |
-| creation_date | date | The date the blog was created |
-
-## Project plan
-1.	Set up the development environment.
-2.	Create the database and design its structure.
-3.	Implement the business logic.
-4.	Create a simple HTML prototype of the interface.
-5.	Add richer interaction to the interface.
-## Main data entities
-- We need some objects. Such as, Buttons, forms. 
-- Buttons are Blog_Rogo to jump to the top page, 
-- Post_Your_Blog to jump to Post Blog page, 
-- Login to login to your account, 
-- Post to add a new blog data to DB, 
-- Blog_Title to jump to blog text page,
-- Authoer to jump to author’s blogs page,
-- search to jump to search result page,
-- Previous/next to switch blogs list,
-- and prev/next to switch calendear page.
-- Forms are Id, password. form to input your account data, 
-- and search form to search blogs from DB.
-- Also, we need the blog object have a blog’s information,
-- and the calendear object.
-
-
-## Main user flow
-
-Enter page: show the page sort by date.<br>
-Login: input id and password → login to the account if id and password are valid.<br>
-Post Blog: input blog information → record the content to DB.<br>
-Search: write string on form and click search → show search result<br>
-Search-date: click the day of calendar　→ show search result<br>
-
-## Architecture sketch
+## Architecture sketch (old)
 ![architecture sketch](images/arcsk.png)

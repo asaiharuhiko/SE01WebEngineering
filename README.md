@@ -1,48 +1,106 @@
 # SE01WebEngineering
+
 2026/Q2 in UoA
-## outline
-### The blogs
-The proposed web application allows the user to create blog posts in a shared blog space.
 
-### Main user actions
-- Display all blog posts sorted by date, with the most recent post shown first.
-- Display the list of authors.
-- Show only the blog posts written by a selected author.
-- Register in the system with a unique user name and passwrd, and start writing their own blog posts.
-- Find all blog posts matching a user query.
+## Overview
 
-### Basic data model idea
+The Blogs application is a Django web application that allows users to create and share blog posts in a shared blog space.
 
-#### User table　(Using Django's AbstractUser)
-| Column | Type | Comment |
-| --- | --- | --- |
-| id | int | primary key (auto create) |
-| username | string | unique user name|
-| password | string | Password |
+### Main Features
 
-#### Article table
-| Column | Type | Comment |
-| --- | --- | --- |
-| id | int | primary key (auto create) |
-| title | string | Title of the blog |
-| author | ForeignKey | Author name of the blog. (Link to User table) |
-| content | text | The content of the blog |
-| creation_date | date | The date the blog was created |
+- Display all blog posts sorted by date (most recent first)
+- Display list of all authors
+- Show blog posts written by a selected author
+- Select a date in the calendar and display posts from that day
+- Register with a unique username and password to create blog posts
+- Search blog posts by title keyword
+
+## Specification
+
+Full specification is available at [openspec/specs/blogs/spec.md](openspec/specs/blogs/spec.md).
+
+## Project Structure
+
+```
+├── account/          # User authentication app
+│   ├── models.py
+│   ├── views.py
+│   └── forms.py
+├── post/             # Blog posts app
+│   ├── models.py
+│   ├── views.py
+│   ├── services.py
+│   ├── selectors.py
+│   └── templates/
+├── templates/        # Global templates
+├── blog_prj/         # Django project settings
+└── openspec/         # Specifications
+```
+
+## Setup
+
+### Prerequisites
+
+- Python >= 3.13
+- uv (package manager)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/asaiharuhiko/SE01WebEngineering.git
+cd SE01WebEngineering
+
+# Install dependencies
+uv sync
+
+# Apply migrations
+python manage.py migrate
+
+# Create superuser (optional)
+python manage.py createsuperuser
+```
+
+### Run
+
+```bash
+python manage.py runserver
+```
+
+Access at http://127.0.0.1:8000/
+
+## Testing
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage
+coverage run -m pytest
+coverage report
+```
+
+## Code Quality
+
+```bash
+# Lint
+ruff check
+
+# Format
+ruff format
+```
 
 ## environment
-- HTMX
-- Django
-- Python >= 3.13
-## tools
-### uv 
-for package management
-### Ruff 
-for formatting and linting
-### coverage.py 
-for coverage 
-### pytest
-for testing
-### git 
-for version management
-### Visual Studio Code 
-for coding
+
+- **Django**: web application framework
+- **HTMX**: Async interface for dynamic updates
+
+## Tools
+
+| Tool | Purpose |
+| --- | --- |
+| uv | Package management |
+| Ruff | Formatting and linting |
+| coverage.py | Test coverage |
+| pytest | Testing |
+| git | Version control |
