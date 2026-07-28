@@ -54,7 +54,7 @@ The database will contain two tables:
 | username | string | unique user name|
 | password | string | Password |
 
-#### Article table
+#### BlogPost table
 | Column | Type | Comment |
 | --- | --- | --- |
 | id | int | primary key (auto create) |
@@ -70,29 +70,55 @@ The database will contain two tables:
 4.	Create a simple HTML prototype of the interface.
 5.	Add richer interaction to the interface.
 ## Main data entities
-- We need some objects. Such as, Buttons, forms. 
-- Buttons are Blog_Rogo to jump to the top page, 
-- Post_Your_Blog to jump to Post Blog page, 
-- Login to login to your account, 
-- Post to add a new blog data to DB, 
-- Blog_Title to jump to blog text page,
-- Authoer to jump to author’s blogs page,
-- search to jump to search result page,
-- Previous/next to switch blogs list,
-- and prev/next to switch calendear page.
-- Forms are Id, password. form to input your account data, 
-- and search form to search blogs from DB.
-- Also, we need the blog object have a blog’s information,
-- and the calendear object.
+
+### Models
+- **BlogPost**: id, title, author (ForeignKey to User), content, creation_date
+- **User**: Django's AbstractUser (id, username, password, etc.)
+
+### Forms
+- **BlogForm**: ModelForm for BlogPost (fields: title, content, creation_date)
+
+### Views
+- **IndexView**: Display all blog posts sorted by date (most recent first)
+- **SearchView**: Search posts by title keyword, date, or author
+- **CreatePostView**: Create new blog post (login required)
+- **PostDetailView**: Display single blog post
+- **CalendarView**: Display calendar and posts for selected date
+- **AuthorsView**: Display list of all authors
+
+### Services
+- **create_post**: Create and save new blog post with author association
+
+### Selectors
+- **get_latest_posts**: Retrieve paginated blog posts sorted by date
+- **get_posts_by_query**: Search posts by title keyword
+- **get_posts_by_date**: Filter posts by creation date
+- **get_posts_by_author**: Filter posts by author username
+- **get_post**: Retrieve single post by ID
+- **get_authors_list**: Retrieve paginated list of all authors
+- **get_calendar_context**: Generate calendar HTML and navigation context
+
+### Templates
+- **index.html**: Home page with latest posts
+- **post_detail.html**: Single blog post view
+- **create.html**: Blog post creation form
+- **search.html**: Search results page
+- **authors.html**: Authors list page
+- **author_list.html**: Partial template for HTMX author list updates
+- **post_list.html**: Partial template for HTMX post list updates
+- **calendar.html**: Calendar component with navigation
 
 
 ## Main user flow
 
-Enter page: show the page sort by date.<br>
-Login: input id and password → login to the account if id and password are valid.<br>
-Post Blog: input blog information → record the content to DB.<br>
-Search: write string on form and click search → show search result<br>
-Search-date: click the day of calendar　→ show search result<br>
+1. **Enter page**: Display home page with latest blog posts sorted by date (most recent first)
+2. **Login**: Input username and password → authenticate and redirect to home page
+3. **Post Blog**: Click "Post Your Blog" → input title, content, creation date → save to database
+4. **Search by keyword**: Input string in search box → display posts matching title keyword
+5. **Search by date**: Click day in calendar → display posts created on that date
+6. **Search by author**: Click author name → display posts by that author
+7. **View post**: Click blog title → display full blog post content
+8. **Pagination**: Click "Next"/"Previous" links to navigate through multiple pages of results
 
 ## Architecture sketch
 ![architecture sketch](images/arcsk.png)
