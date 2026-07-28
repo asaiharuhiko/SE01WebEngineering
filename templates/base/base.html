@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <script src="{% static 'htmx.min.js' %}"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'post:index' %}">BLOG</a></h1>
+            <a href="{% url 'post:create' %}">GO POST!</a>
+    </header>
+
+    <aside class="sidebar">
+    {% if user.is_authenticated %}
+        <p>account:<a href="{% url 'account:information' %}">{{ user.username }}</a></p>
+        <a href="{% url 'account:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'account:login' %}">Login</a>
+    {% endif %}
+    {% load calendar_tags %}
+    {% calendar %}
+
+    <form action="{% url 'post:search' %}" method="get">
+        <input type="text" name="words" placeholder="search posts">
+        <button type="submit">Search</button>
+    </form>
+
+    <a href=" {% url 'post:authors' %}">authors</a>
+    </aside>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

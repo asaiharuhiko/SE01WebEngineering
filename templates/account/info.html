@@ -1,0 +1,11 @@
+{% extends "base/base.html" %}
+
+{% block title%}
+account information
+{% endblock %}
+
+{%block content%}
+    <h2>Account Information</h2>
+    <p>Account name: {{ account.username }}</p>
+    <p>Joined: {{ account.date_joined | date:"Y-m-d"}}</p>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block title%}
+logout
+{% endblock %}
+
+{%block content%}
+    <h2>logout</h2>
+    <p>you assume logout your account.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">logout {{ user.username }}</button>
+    </form>
+    <button onclick="history.back()">back</button>
+{% endblock %}

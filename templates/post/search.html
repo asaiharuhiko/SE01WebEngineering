@@ -1,0 +1,12 @@
+{% extends "base/base.html" %}
+
+{% block title%} 
+search result
+{% endblock %}
+
+{% block content %}
+    {% if search_header %}
+        <p>{{ search_header}}</p>
+    {% endif %}
+    {% include "post/post_list.html" %}
+{% endblock %}
