@@ -3,13 +3,17 @@
 {% block title%}
 logout
 {% endblock %}
+{% block script %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
 
 {%block content%}
     <h2>logout</h2>
     <p>you assume logout your account.</p>
+    <br>
     <form method="POST">
         {% csrf_token %}
         <button type="submit">logout {{ user.username }}</button>
     </form>
-    <button onclick="history.back()">back</button>
 {% endblock %}

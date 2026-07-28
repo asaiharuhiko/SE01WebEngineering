@@ -1,37 +1,48 @@
+/* reset  */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    display: grid;
-    grid-template-areas:"header header"
-                        "content sidebar";
-    grid-template-columns: 1fr 250px;
-    grid-template-rows: auto 1fr;
-}
-
 ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+}
+
+/* layout  */
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "content sidebar"
+        "footer  sidebar";
+    grid-template-columns: 1fr 350px;
+    grid-template-rows: auto 1fr;
+    transition: grid-template-columns 0.3s;
+}
+
+body.sidebar-closed {
+    grid-template-columns: 1fr 0;
 }
 
 /* header */
-.post-link{
-    font-weight: bold;
-}
 
 header {
+    grid-area: header;
+
     position: sticky;
     top: 0;
     z-index: 100;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 1rem 2rem;
-    background-color: white;
+    background: white;
 }
 
 header h1 {
@@ -39,51 +50,92 @@ header h1 {
 }
 
 header a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+}
+
+.post-link {
+    font-weight: bold;
+}
+
+.post-link:hover{
+    color: red;
+}
+
+button#sidebar-toggle{
+    font-size: 3rem;    
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+
+button#sidebar-toggle:hover{
+    color: rgb(182, 181, 181);
 }
 
 /* sidebar */
+
 .sidebar {
     grid-area: sidebar;
+
+    overflow: hidden;
 }
 
-/* content */
+/* content  */
+
 #content {
     grid-area: content;
-    padding: 3em;
+    padding: 3rem;
 }
 
-.post{
-    background-color: rgb(251, 249, 249);
-    padding: 1em;
-    margin: 2em;
+.post {
+    margin: 2rem;
+    padding: 1rem;
+    background: rgb(251, 249, 249);
 }
 
-.post a{
-    text-decoration: none;
+.post a {
     color: inherit;
+    text-decoration: none;
 }
 
-.post h3{
-    font-size: 3em;
+.post h3 {
+    font-size: 2.6rem;
 }
 
 .cursor {
     text-align: center;
+
 }
 
+.cursor a{
+    color: rgb(84, 84, 84);
+    font-size: 2em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+.cursor span{
+    font-size: 2em;
+}
+
+
+
 /* calendar */
+
 .calendar table.month {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.85em;
+    font-size: 0.85rem;
 }
 
 .calendar th.month {
+    padding: 0.5rem;
     text-align: center;
-    padding: 0.5em;
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 .calendar th.mon,
@@ -93,43 +145,98 @@ header a {
 .calendar th.fri,
 .calendar th.sat,
 .calendar th.sun {
+    padding: 0.3rem;
     text-align: center;
-    padding: 0.3em;
     font-weight: normal;
     color: #666;
 }
 
 .calendar td {
+    padding: 0.4rem;
     text-align: center;
-    padding: 0.4em;
     border: 1px solid #eee;
 }
 
 .calendar td a {
     display: block;
-    text-decoration: none;
-    color: inherit;
-    padding: 0.2em;
+    padding: 0.2rem;
     border-radius: 4px;
+    color: inherit;
+    text-decoration: none;
 }
 
-.calendar td a:hover {
-    background-color: #f0f0f0;
+.calendar td:hover {
+    background: rgb(170, 170, 170);
 }
 
 .calendar-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 0;
-    font-size: 0.9em;
+
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
 }
 
 .calendar-nav a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
 }
 
 .calendar-nav a:hover {
     text-decoration: underline;
+}
+
+/* footer */
+
+footer {
+    grid-area: footer;
+    text-align: center;
+}
+
+/* search */
+
+#search-box{
+    display: flex;
+    padding: 0.2em;
+    padding-top: 3em;
+}
+
+input.search{
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    font-size: 1rem;
+}
+
+button.search{
+    padding: 0.2em;
+    border: none;
+    background:rgb(175, 175, 175);
+    cursor: pointer;
+}
+
+/* account */
+
+#account {
+    padding: 0.2em;
+    padding-bottom: 2em;
+    text-align: center;
+}
+
+#account p{
+    font-size: 2em;
+}
+
+#account p.info{
+    font-size: 0.3em;
+
+}
+
+/* authors */
+
+.authors{
+    padding: 10px;
+    font-size: 2em;
 }

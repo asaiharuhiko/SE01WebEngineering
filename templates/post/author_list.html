@@ -1,7 +1,7 @@
 <div id="authors">
     <ul>
     {% for author in authors %}
-        <li>
+        <li class="author">
             <a href="{% url 'post:search' %}?author={{ author }}">{{ author }}</a>
         </li>
     {% empty %}
@@ -10,7 +10,7 @@
     </ul>
 
     {% if authors.has_other_pages %}
-    <div>
+    <div class="cursor">
         {% if authors.has_previous %}
             <a href="?page={{ authors.previous_page_number }}" hx-get="?page={{ authors.previous_page_number }}" hx-target="#authors" hx-swap="outerHTML"> ← prev</a>
         {% endif %}

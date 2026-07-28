@@ -9,5 +9,4 @@
 <div><a href="{% url 'post:search' %}?author={{ post.author }}">{{ post.author }}</a> / {{ post.creation_date }}</div>
 <div>{{ post.content | linebreaksbr}}</div>
 <br>
-<button onclick="history.back()">back</button>
 {% endblock %}

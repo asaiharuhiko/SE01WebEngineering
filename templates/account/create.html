@@ -3,6 +3,10 @@
 {% block title%}
 create account
 {% endblock %}
+{% block script %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
 
 {%block content%}
     <h2>Create Account</h2>
@@ -11,5 +15,4 @@ create account
         {{ form.as_p }}
         <button type="submit">create</button>
     </form>
-    <button onclick="history.back()">back</button>
 {% endblock %}
