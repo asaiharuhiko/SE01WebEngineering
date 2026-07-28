@@ -85,6 +85,7 @@ For production deployment, configure the following environment variables:
 |----------|-------------|
 | `SECRET_KEY` | Django secret key |
 | `DEBUG` | Enable debug mode |
+| `DATABASE_URL` | Internal Render PostgreSQL URL |
 
 ## Testing
 
@@ -110,30 +111,41 @@ uv run ruff format
 
 This project is configured for deployment on Render.
 
-Please set build command and start command.
+### 1. Create a Web Service
 
-Build Command
+On the Render Dashboard, create a new **Web Service** and connect this repository.
+
+### 2. Set Build & Start Commands
+
+Set the **Build Command**:
 
 ```bash
 uv sync --frozen && uv cache prune --ci && uv run python manage.py collectstatic --noinput && uv run python manage.py migrate
 ```
 
-Start Command
+Set the **Start Command**:
 
 ```bash
 uv run gunicorn blog_prj.wsgi:application
 ```
 
-Plsease create New Postgres Database
+### 3. Attach a PostgreSQL Database
 
+Create a new **PostgreSQL Database** on Render, then attach it to the Web Service from the dashboard. This automatically sets the `DATABASE_URL` environment variable.
 
-Required environment variables
+### 4. Set Environment Variables
 
-- SECRET_KEY
-- DEBUG
-- 
+Navigate to **Dashboard → Your App → Environment** and set:
 
-Please set Enviroment -> Environment Variables
+| Variable | Description |
+|----------|-------------|
+| `SECRET_KEY` | Django secret key (use a strong, random value) |
+| `DEBUG` | Set to `False` for production |
+| `DATABASE_URL` | Internal Render PostgreSQL URL (auto-provided by Render when you attach a database) |
+
+## Live Demo
+
+https://se01webengineering.onrender.com/
 
 ## Environment
 
@@ -151,5 +163,5 @@ Please set Enviroment -> Environment Variables
 | git | Version control |
 | gunicorn | WSGI application server |
 | whitenoise | Serve static files |
-| dj-database-url | |
-| psycopg-binary | |
+| dj-database-url | Database URL parsing |
+| psycopg-binary | PostgreSQL database adapter |
