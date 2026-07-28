@@ -1,25 +1,21 @@
-import calendar 
+import calendar
 from datetime import date
 from django.urls import reverse
+
 
 class BlogCalendar(calendar.HTMLCalendar):
     def __init__(self, year, month):
         super().__init__(firstweekday=0)
         self.year = year
         self.month = month
-        
+
     def formatday(self, day, month):
         if day == 0:
             return '<td class="noday">&nbsp;</td>'
 
         d = date(self.year, self.month, day)
         url = reverse("post:search") + f"?date{d:%Y-%m-%d}"
-        return (
-            f'<td class="day">'
-            f'<a href="{url}"'
-            f'>{day}</a>'
-            f'</td>'
-        )
+        return f'<td class="day"><a href="{url}">{day}</a></td>'
 
 
 def get_prev_next_month(year, month):
