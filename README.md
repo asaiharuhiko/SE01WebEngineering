@@ -110,11 +110,12 @@ uv run ruff format
 
 This project is configured for deployment on Render.
 
+Please set build command and start command.
+
 Build Command
 
 ```bash
-uv sync
-uv run python manage.py collectstatic --noinput
+uv sync --frozen && uv cache prune --ci && uv run python manage.py collectstatic --noinput && uv run python manage.py migrate
 ```
 
 Start Command
@@ -123,10 +124,16 @@ Start Command
 uv run gunicorn blog_prj.wsgi:application
 ```
 
+Plsease create New Postgres Database
+
+
 Required environment variables
 
 - SECRET_KEY
 - DEBUG
+- 
+
+Please set Enviroment -> Environment Variables
 
 ## Environment
 
@@ -144,3 +151,5 @@ Required environment variables
 | git | Version control |
 | gunicorn | WSGI application server |
 | whitenoise | Serve static files |
+| dj-database-url | |
+| psycopg-binary | |
