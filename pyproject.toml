@@ -6,9 +6,11 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "coverage>=7.14.2",
+    "dj-database-url>=3.1.2",
     "django>=6.0.6",
     "django-htmx>=1.28.0",
     "gunicorn>=26.0.0",
+    "psycopg[binary]>=3.3.4",
     "pytest-django>=4.12.0",
     "ruff>=0.15.17",
     "whitenoise>=6.12.0",
