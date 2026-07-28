@@ -81,7 +81,54 @@ button#sidebar-toggle:hover{
 .sidebar {
     grid-area: sidebar;
 
-    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* ----- responsive: small screens ----- */
+
+@media (max-width: 768px) {
+    body {
+        grid-template-areas:
+            "header"
+            "content"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 200;
+        background: white;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+        padding: 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    body.sidebar-open .sidebar {
+        transform: translateX(0);
+    }
+
+    /* overlay backdrop */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 150;
+        background: rgba(0,0,0,0.4);
+    }
+
+    body.sidebar-open .sidebar-overlay {
+        display: block;
+    }
+
+    #content {
+        padding: 1.5rem;
+    }
 }
 
 /* content  */
@@ -103,7 +150,7 @@ button#sidebar-toggle:hover{
 }
 
 .post h3 {
-    font-size: 2.6rem;
+    font-size: 2rem;
 }
 
 .cursor {
@@ -113,13 +160,13 @@ button#sidebar-toggle:hover{
 
 .cursor a{
     color: rgb(84, 84, 84);
-    font-size: 2em;
+    font-size: 1em;
     padding-left: 0.3em;
     padding-right: 0.3em;
 }
 
 .cursor span{
-    font-size: 2em;
+    font-size: 1em;
 }
 
 
@@ -238,5 +285,5 @@ button.search{
 
 .authors{
     padding: 10px;
-    font-size: 2em;
+    font-size: 1.5em;
 }

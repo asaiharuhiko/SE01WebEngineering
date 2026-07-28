@@ -243,11 +243,17 @@ The `BlogPost` model SHALL have a `__str__` method that returns the title.
 - **WHEN** `str()` is called on a `BlogPost` instance
 - **THEN** it SHALL return the post's title
 
-### Requirement: tests use Django TestCase and run via manage.py
+### Requirement: tests use Django TestCase and run via pytest
 All tests SHALL inherit from `django.test.TestCase` and be discoverable under
-each app's `tests.py`.
+each app's `tests.py`. `pytest` with `pytest-django` is configured as the test
+runner via pyproject.toml.
 
-#### Scenario: Tests are runnable
+#### Scenario: Tests are runnable with pytest
+- **WHEN** `pytest` is executed
+- **THEN** all tests in `account/tests.py` and `post/tests.py` SHALL pass
+  with no errors
+
+#### Scenario: Tests are runnable with manage.py
 - **WHEN** `python manage.py test` is executed
 - **THEN** all tests in `account/tests.py` and `post/tests.py` SHALL pass
   with no errors
